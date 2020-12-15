@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft Corporation.
  * Licensed under the MIT License.
  */
-package scm.service
+package scm.controller
 
 import io.dapr.Topic
 import org.springframework.web.bind.annotation.RestController

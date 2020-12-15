@@ -13,11 +13,7 @@ object Utility {
     var client: DaprClient? = null
     var config: Properties?  = null
 
-    fun loadConfig() = FileInputStream(System.getProperty("user.dir") + "\\service.config").use {
-        Properties().apply {
-            load(it)
-        }
-    }
+
 
     @JvmName("getConfig1")
     fun getConfig(): Properties {
@@ -48,6 +44,11 @@ object Utility {
             e.printStackTrace()
             Thread.currentThread().interrupt()
             return
+        }
+    }
+    fun loadConfig() = FileInputStream(System.getProperty("user.dir") + "\\service.config").use {
+        Properties().apply {
+            load(it)
         }
     }
 
