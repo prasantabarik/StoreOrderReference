@@ -13,4 +13,4 @@ spec:
     - name: spnClientId
       value: "bcbc812f-b752-46fb-8e95-7574198b8228"
     - name: spnCertificateFile
-      value : "E:/d_backup/saran/test/kotlin_microservice/daprservice/components/delspncert.pfx"
+      value : "./components/delspncert.pfx"
