@@ -1,6 +1,3 @@
-package com.tcs.service.model
+package scm.model
 
-data class Model (
-
-        var data: DeliveryScheduleModel
-    )
+ class Model {}

@@ -1,4 +1,4 @@
-package com.tcs.service.constant
+package scm.constant
 
 object URLPath {
 

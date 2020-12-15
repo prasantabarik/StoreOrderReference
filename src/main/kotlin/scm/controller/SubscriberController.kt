@@ -1,7 +1,4 @@
-/*
- * Copyright (c) Microsoft Corporation.
- * Licensed under the MIT License.
- */
+
 package scm.controller
 
 import io.dapr.Topic
