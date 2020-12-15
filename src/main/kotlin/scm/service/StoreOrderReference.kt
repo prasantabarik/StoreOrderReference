@@ -42,34 +42,7 @@ object StoreOrderReference {
                     Aggregates.project(fields(include("_id", "ns", "documentKey", "fullDocument")))))
                     .fullDocument(FullDocument.UPDATE_LOOKUP).cursor()
 
-            collection.insertOne(Document.parse("{" +
-                    "'id': '70052020-11-211'," +
-                    "'storeNumber': 1110," +
-                    "'streamNumber': 1," +
-                    "'deliveryStreamName': 'HOUDBAAR 2113212'," +
-                    "'schemaName': 'BASISSCHEMA'," +
-                    "'deliveryDateTime': '2020-12-02 18:30:00'," +
-                    "'orderDateTime': '2020-12-01 21:00:00'," +
-                    "'initialPromotionFlag': 'N'," +
-                    "'orderStatus': null," +
-                    "'totalInitialOrderQuantity': null," +
-                    "'totalOrderQuantity': null," +
-                    "'boxSize': 90010," +
-                    "'fillDateTime': '2020-12-02 18:30:00'," +
-                    "'mainDeliveryFlag': 'J'," +
-                    "'storeAdviseFlag': 'N'," +
-                    "'deliverySchemaType': null," +
-                    "'delivererNumber': 2," +
-                    "'startFillTime': '2020-12-02 18:00:00'," +
-                    "'storeOrder': null," +
-                    "'logisticGroupExclusion': ''," +
-                    "'createdBy': 'pnl0060s'," +
-                    "'creationDateTime': '2020-11-04 13:05:27'," +
-                    "'updatedBy': 'pnl0d93h'," +
-                    "'updateDateTime': '2020-11-04 13:05:27'," +
-                    "'isdeleted': false" +
-            "}"))
-
+            
             while (cursor.hasNext()) {
                 var csDoc: ChangeStreamDocument<org.bson.Document>  = cursor.next()
                 println("POSTED VALUE: " + csDoc.toString())
