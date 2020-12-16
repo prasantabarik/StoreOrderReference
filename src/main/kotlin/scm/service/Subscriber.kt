@@ -7,6 +7,7 @@ package scm.service
 import org.apache.commons.cli.CommandLineParser
 import org.apache.commons.cli.DefaultParser
 import org.apache.commons.cli.Options
+import scm.service.subscriber.DaprApplicationSubscriber
 import kotlin.jvm.JvmStatic
 import java.lang.Exception
 
@@ -16,7 +17,7 @@ import java.lang.Exception
  * mvn clean install
  * 2. Run the server:
  * dapr run --components-path ./components --app-id subscriber --app-port 3000 --dapr-http-port 3005 -- \
- * java -jar examples/target/dapr-service-exec.jar io.dapr.service.Subscriber -p 3000
+ * java -jar target/dapr-service-exec.jar scm.service.Subscriber -p 3000
  */
 object Subscriber {
     /**
@@ -34,7 +35,6 @@ object Subscriber {
 
         // If port string is not valid, it will throw an exception.
         val port = cmd.getOptionValue("port").toInt()
-        println(" PORT RECEIVED : " + port)
-        DaprApplication().start(port)
+        DaprApplicationSubscriber().start(port)
     }
 }

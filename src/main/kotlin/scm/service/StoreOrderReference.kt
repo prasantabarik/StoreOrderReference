@@ -22,7 +22,7 @@ import org.bson.Document
  * mvn clean install
  * 2. Run the program:
  * dapr run --components-path ./components --app-id changestream --dapr-http-port 3007 -- java -jar
- * target/dapr-service-exec.jar io.dapr.service.ChangeStream
+ * target/dapr-service-exec.jar scm.service.StoreOrderReference
  */
 object StoreOrderReference {
 
@@ -42,12 +42,10 @@ object StoreOrderReference {
                     Aggregates.project(fields(include("_id", "ns", "documentKey", "fullDocument")))))
                     .fullDocument(FullDocument.UPDATE_LOOKUP).cursor()
 
-            
             while (cursor.hasNext()) {
                 var csDoc: ChangeStreamDocument<org.bson.Document>  = cursor.next()
-                println("POSTED VALUE: " + csDoc.toString())
-                //Publishing messages
-                Utility.publish(Utility.getConfig()["pubsub"].toString(), Utility.getConfig()["topic"].toString(), csDoc.toString())
+                println("INSERT/UPDATE DB OPERATIONS: " + csDoc.toString())
+                Utility.invokeService(Utility.getConfig()["appid-publish"].toString(), Utility.getConfig()["publish"].toString(), csDoc.toString())
             }
 
             cursor.close()
