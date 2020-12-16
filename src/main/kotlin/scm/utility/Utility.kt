@@ -54,12 +54,10 @@ object Utility {
     }
 
     fun getUtilitySecret(secretStore: String, secretKey: String): String? {
-        val client : DaprClient = DaprClientBuilder().build()
-
         var mapParams: MutableMap<String, String> = mutableMapOf<String, String>()
         mapParams.put("metadata.namespace", getConfig()["namespace"].toString())
 
-        var secret = client.getSecret(secretStore,secretKey, mapParams).block()
+        var secret = getClientInstance()?.getSecret(secretStore,secretKey, mapParams)?.block()
 
         return secret?.get(secretKey.toString())
     }
