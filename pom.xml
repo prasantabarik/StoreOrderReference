@@ -71,17 +71,17 @@
 		<dependency>
 			<groupId>io.dapr</groupId>
 			<artifactId>dapr-sdk</artifactId>
-			<version>0.10.0</version>
+			<version>1.0.0-rc-2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.dapr</groupId>
 			<artifactId>dapr-sdk-actors</artifactId>
-			<version>0.10.0</version>
+			<version>1.0.0-rc-2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.dapr</groupId>
 			<artifactId>dapr-sdk-springboot</artifactId>
-			<version>0.10.0</version>
+			<version>1.0.0-rc-2</version>
 		</dependency>
 
 		<dependency>
