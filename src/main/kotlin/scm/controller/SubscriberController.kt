@@ -29,8 +29,7 @@ class SubscriberController {
     val pubsub: String = Utility.getConfig()["pubsub"].toString()
 
     @Topic(name = "StoreOrderReference", pubsubName = "pubsub")
-    @PostMapping(path = ["/StoreOrderReference"]) // @PostMapping(path = "/kotlindapr")
-    //@PostMapping(path = "/ageventhub01topic01")
+    @PostMapping(path = ["/StoreOrderReference"])
     fun handleMessage(@RequestBody(required = false) body: ByteArray?,
                       @RequestHeader headers: Map<String?, String?>?): Mono<Void> {
         println("CALLED FROM PUBLISHER:::::::::::::::::::::::::")
