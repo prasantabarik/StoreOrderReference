@@ -8,6 +8,7 @@ import org.apache.commons.cli.CommandLineParser
 import org.apache.commons.cli.DefaultParser
 import org.apache.commons.cli.Options
 import scm.service.publisher.DaprApplicationPublisher
+import scm.utility.Utility
 import kotlin.jvm.JvmStatic
 import java.lang.Exception
 
@@ -38,5 +39,6 @@ object Publisher {
         // If port string is not valid, it will throw an exception.
         val port = cmd.getOptionValue("port").toInt()
         DaprApplicationPublisher().start(port)
+        Utility.StoreOrderReference()
     }
 }
