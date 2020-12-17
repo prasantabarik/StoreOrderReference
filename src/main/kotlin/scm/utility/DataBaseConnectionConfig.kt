@@ -9,17 +9,13 @@ import com.mongodb.client.MongoCollection
 object DataBaseConnectionConfig {
     var mongoClient: MongoClient? = null
 
-    fun getMongoClientInstance(): MongoClient? {
-        if(mongoClient == null){
-            val connectionString = ConnectionString(Utility.getUtilitySecret(Utility.getConfig()["secretStore"].toString(), Utility.getConfig()["secretKey"].toString()).toString()  + "&retrywrites=false")
-            val mongoClientSettings = MongoClientSettings.builder().applyConnectionString(connectionString).build()
-            mongoClient = MongoClients.create(mongoClientSettings)
-        }
-
-        return mongoClient
+    init {
+        val connectionString = ConnectionString(Utility.getUtilitySecret(Config.properties!!["secretStore"].toString(), Config.properties!!["secretKey"].toString()).toString()  + "&retrywrites=false")
+        val mongoClientSettings = MongoClientSettings.builder().applyConnectionString(connectionString).build()
+        mongoClient = MongoClients.create(mongoClientSettings)
     }
 
     fun mongoCollection(): MongoCollection<org.bson.Document> {
-        return getMongoClientInstance()!!.getDatabase(Utility.getConfig()["database"].toString()).getCollection(Utility.getConfig()["collection"].toString())
+        return mongoClient!!.getDatabase(Config.properties!!["database"].toString()).getCollection(Config.properties!!["collection"].toString())
     }
 }

@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono
 import java.lang.Void
 import io.dapr.client.domain.CloudEvent
 import org.springframework.web.bind.annotation.RequestBody
+import scm.utility.Config
 import scm.utility.Utility
 import java.lang.Exception
 import java.lang.RuntimeException
@@ -24,9 +25,6 @@ class SubscriberController {
      * @param headers The headers of the http message.
      * @return A message containing the time.
      */
-    // Load properties from disk.
-    val topic: String = Utility.getConfig()["topic"].toString()
-    val pubsub: String = Utility.getConfig()["pubsub"].toString()
 
     @Topic(name = "StoreOrderReference", pubsubName = "pubsub")
     @PostMapping(path = ["/StoreOrderReference"])
