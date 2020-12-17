@@ -39,6 +39,6 @@ object Publisher {
         // If port string is not valid, it will throw an exception.
         val port = cmd.getOptionValue("port").toInt()
         DaprApplicationPublisher().start(port)
-        Utility.StoreOrderReference()
+        // Utility.StoreOrderReference()
     }
 }
